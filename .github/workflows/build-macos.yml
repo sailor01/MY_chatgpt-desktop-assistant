@@ -37,7 +37,7 @@ jobs:
         zip -r ChatGPT家庭助手.zip "ChatGPT家庭助手.app"
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.3
       with:
         name: ChatGPT家庭助手
         path: dist/ChatGPT家庭助手.zip
