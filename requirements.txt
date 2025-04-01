@@ -1,0 +1,6 @@
+openai>=1.0.0
+PySide6
+pyttsx3
+sounddevice
+scipy
+whisper
