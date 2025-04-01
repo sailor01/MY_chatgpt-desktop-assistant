@@ -34,8 +34,8 @@ jobs:
         cd dist
         zip -r ChatGPT家庭助手.zip "ChatGPT家庭助手.app"
 
-#    - name: 上传编译结果
-#      uses: github-actions/upload-artifact@main
-#      with:
-#        name: ChatGPT家庭助手
-#        path: dist/ChatGPT家庭助手.zip
+    - name: 上传编译产物
+      uses: actions/upload-artifact@v3
+      with:
+        name: ChatGPT家庭助手
+        path: dist/ChatGPT家庭助手.zip
