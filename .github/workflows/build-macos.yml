@@ -1,8 +1,6 @@
 name: Build macOS .app
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -10,34 +8,34 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: Clone repo
+    - name: 获取项目代码
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: 安装 Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.10
 
-    - name: Install dependencies
+    - name: 安装依赖
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
 
-    - name: Build .app
+    - name: 编译为 .app
       run: |
         pyinstaller --noconfirm --windowed --name "ChatGPT家庭助手" main.py \
           --add-data "roles.json:." \
           --add-data "config.json:." \
           --add-data "themes:themes"
 
-    - name: Zip the .app
+    - name: 压缩 .app
       run: |
         cd dist
         zip -r ChatGPT家庭助手.zip "ChatGPT家庭助手.app"
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3.1.3
+    - name: 上传编译结果
+      uses: actions/upload-artifact@v3
       with:
         name: ChatGPT家庭助手
         path: dist/ChatGPT家庭助手.zip
